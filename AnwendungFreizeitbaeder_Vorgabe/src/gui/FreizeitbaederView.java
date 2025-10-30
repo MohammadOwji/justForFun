@@ -135,7 +135,19 @@ public class FreizeitbaederView {
 		        public void handle(ActionEvent e) {
 		            zeigeFreizeitbaederAn();
 		        } 
-	   	    });  
+	   	    }); 
+		    mnItmCsvExport.setOnAction(new EventHandler<ActionEvent>() { 
+		    	@Override 
+		    	public void handle(ActionEvent e) { 
+		    	schreibeFreizeitbaederInDatei("csv"); 
+		    	}  
+		    	}); 
+		    	mnItmTxtExport.setOnAction(new EventHandler<ActionEvent>() { 
+		    	@Override 
+		    	public void handle(ActionEvent e) { 
+		    	schreibeFreizeitbaederInDatei("txt"); 
+		    	}  
+		    	});
 	    }
 	 
 	 private void zeigeFreizeitbaederAn(){
@@ -157,6 +169,9 @@ public class FreizeitbaederView {
 	       	new MeldungsfensterAnzeiger(AlertType.ERROR,
 	        	fehlertyp + "Fehler", meldung).zeigeMeldungsfensterAn();
 	    }
+	   private void schreibeFreizeitbaederInDatei(String typ){ 
+		     control.schreibeFreizeitbaederInDatei(typ);
+		}
 	    
 	    public TextField getTxtName() {
 			return txtName;

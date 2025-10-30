@@ -1,5 +1,7 @@
 package gui;
 
+import java.io.IOException;
+
 import business.Freizeitbad;
 import business.FreizeitbaederModel;
 import javafx.stage.Stage;
@@ -30,4 +32,24 @@ public class FreizeitbaederControl {
        		view.zeigeFehlermeldungsfensterAn(exc.getPlausiTyp() + "er ", exc.getMessage());
      	}
     }
+	public void schreibeFreizeitbaederInDatei(String typ){ 
+	     try{ 
+	      if("csv".equals(typ)){ 
+	    	  model.schreibeFreizeitbaederInCsvDatei();
+	      view.zeigeInformationsfensterAn("Freizeit wurde gespeichert!");
+	      } 
+	      else{ 
+	       view.zeigeInformationsfensterAn( 
+	        "Noch nicht implementiert!"); 
+	      } 
+	      }  
+	  catch(IOException exc){ 
+	   view.zeigeFehlermeldungsfensterAn( 
+	    "IO","IOException beim Speichern!"); 
+	  } 
+	  catch(Exception exc){ 
+	   view.zeigeFehlermeldungsfensterAn( 
+	    "Unbekannt","Unbekannter Fehler beim Speichern!"); 
+	  } 
+	} 
 }
